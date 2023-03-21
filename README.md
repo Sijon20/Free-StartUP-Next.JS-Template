@@ -14,7 +14,7 @@ and Much More ...
 
 ### [🚀 View Demo](https://startup.nextjstemplates.com/)
 
-### [📦 Download](https://nextjstemplates.com/templates/startup)
+### [📦 Download](https://github.com/Sijon20/Free-StartUP-Next.JS-Template/archive/refs/heads/main.zip)
 
 ### [🔌 Documentation](https://nextjstemplates.com/docs)
 
