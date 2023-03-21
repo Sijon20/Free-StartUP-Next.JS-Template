@@ -16,8 +16,6 @@ and Much More ...
 
 ### [📦 Download](https://nextjstemplates.com/templates/startup)
 
-### [🔌 Documentation](https://nextjstemplates.com/docs)
-
 ### ⚡ Deploy Now
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Sijon20/Free-StartUP-Next.JS-Template)

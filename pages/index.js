@@ -16,6 +16,10 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Home() {
   return (
     <>
+    <Head>
+      <title>NextJS TailwindCSS Starter</title>
+      <meta name="description" content="NextJS TailwindCSS Starter" />
+      </Head>
       <Hero />
       <Features />
       <Video />
