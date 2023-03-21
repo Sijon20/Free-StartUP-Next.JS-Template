@@ -20,9 +20,9 @@ and Much More ...
 
 ### ⚡ Deploy Now
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Sijon20/StartUP-Next.JS-Template)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Sijon20/Free-StartUP-Next.JS-Template)
 
-[![Deploy with Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/Sijon20/StartUP-Next.JS-Template)
+[![Deploy with Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/Sijon20/Free-StartUP-Next.JS-Template)
 
 
 ### 📄 License
