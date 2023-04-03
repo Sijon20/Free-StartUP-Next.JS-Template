@@ -1,9 +1,53 @@
 import Link from "next/link";
-
+import{useRouter} from "next/router";
+import { useState ,useEffect } from "react";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import {ServerError,SingUPSuccess,NotSamePassword,EmailAlreadyExist,NotField} from "../components/tost";
+import {userregister} from "../components/apis";
 const SignupPage = () => {
+  const router = useRouter();
+
+  const [regdata, setregdata] = useState({
+    name: "",
+    email: "",
+    password: "",
+    cpassword: ""
+  })
+  const register = (e) => {
+    e.preventDefault();
+    const {name,email,password,cpassword} = regdata;
+    if(name && email && password && cpassword){
+      if(password === cpassword){
+        const ree = async () => {
+        await userregister(regdata);
+        setTimeout(() => {
+          // window.location.href = "/";
+          router.push("/");
+        }
+        , 3000);
+        const rankey = Math.random();
+      }
+      ree();
+      }
+
+      else{
+        NotSamePassword();
+      }
+    }
+    else{
+      NotField();
+    }
+  }; 
+  const onchanhe = (e) => {
+    e.preventDefault();
+    const { name, value } = e.target;
+    setregdata({ ...regdata, [name]: value });
+  }; 
   return (
     <>
       <section className="relative z-10 overflow-hidden pt-36 pb-16 md:pb-20 lg:pt-[180px] lg:pb-28">
+      
         <div className="container">
           <div className="-mx-4 flex flex-wrap">
             <div className="w-full px-4">
@@ -23,7 +67,7 @@ const SignupPage = () => {
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
                     >
-                      <g clip-path="url(#clip0_95:967)">
+                      <g clipPath="url(#clip0_95:967)">
                         <path
                           d="M20.0001 10.2216C20.0122 9.53416 19.9397 8.84776 19.7844 8.17725H10.2042V11.8883H15.8277C15.7211 12.539 15.4814 13.1618 15.1229 13.7194C14.7644 14.2769 14.2946 14.7577 13.7416 15.1327L13.722 15.257L16.7512 17.5567L16.961 17.5772C18.8883 15.8328 19.9997 13.266 19.9997 10.2216"
                           fill="#4285F4"
@@ -57,10 +101,10 @@ const SignupPage = () => {
                   </p>
                   <span className="hidden h-[1px] w-full max-w-[60px] bg-body-color sm:block"></span>
                 </div>
-                <form>
+                <form onSubmit={register}>
                   <div className="mb-8">
                     <label
-                      for="name"
+                      htmlFor="name"
                       className="mb-3 block text-sm font-medium text-dark dark:text-white"
                     >
                       {" "}
@@ -69,43 +113,66 @@ const SignupPage = () => {
                     <input
                       type="text"
                       name="name"
+                      value={regdata.name}
+                      onChange={onchanhe}
                       placeholder="Enter your full name"
                       className="w-full rounded-md border border-transparent py-3 px-6 text-base text-body-color placeholder-body-color shadow-one outline-none focus:border-primary focus-visible:shadow-none dark:bg-[#242B51] dark:shadow-signUp"
                     />
                   </div>
                   <div className="mb-8">
                     <label
-                      for="email"
+                      htmlFor="email"
                       className="mb-3 block text-sm font-medium text-dark dark:text-white"
                     >
                       {" "}
-                      Work Email{" "}
+                      Email{" "}
                     </label>
                     <input
                       type="email"
                       name="email"
+                      value={regdata.email}
+                      onChange={onchanhe}
                       placeholder="Enter your Email"
                       className="w-full rounded-md border border-transparent py-3 px-6 text-base text-body-color placeholder-body-color shadow-one outline-none focus:border-primary focus-visible:shadow-none dark:bg-[#242B51] dark:shadow-signUp"
                     />
                   </div>
                   <div className="mb-8">
                     <label
-                      for="password"
+                      htmlFor="password"
                       className="mb-3 block text-sm font-medium text-dark dark:text-white"
                     >
                       {" "}
-                      Your Password{" "}
+                      Password{" "}
                     </label>
                     <input
                       type="password"
                       name="password"
+                      value={regdata.password}
+                      onChange={onchanhe}
+                      placeholder="Enter your Password"
+                      className="w-full rounded-md border border-transparent py-3 px-6 text-base text-body-color placeholder-body-color shadow-one outline-none focus:border-primary focus-visible:shadow-none dark:bg-[#242B51] dark:shadow-signUp"
+                    />
+                  </div>
+                  <div className="mb-8">
+                    <label
+                      htmlFor="password"
+                      className="mb-3 block text-sm font-medium text-dark dark:text-white"
+                    >
+                      {" "}
+                      Confirm Password{" "}
+                    </label>
+                    <input
+                      type="password"
+                      name="cpassword"
+                      value={regdata.cpassword}
+                      onChange={onchanhe}
                       placeholder="Enter your Password"
                       className="w-full rounded-md border border-transparent py-3 px-6 text-base text-body-color placeholder-body-color shadow-one outline-none focus:border-primary focus-visible:shadow-none dark:bg-[#242B51] dark:shadow-signUp"
                     />
                   </div>
                   <div className="mb-8 flex">
                     <label
-                      for="checkboxLabel"
+                      htmlFor="checkboxLabel"
                       className="flex cursor-pointer select-none text-sm font-medium text-body-color"
                     >
                       <div className="relative">
@@ -148,7 +215,7 @@ const SignupPage = () => {
                     </label>
                   </div>
                   <div className="mb-6">
-                    <button className="flex w-full items-center justify-center rounded-md bg-primary py-4 px-9 text-base font-medium text-white transition duration-300 ease-in-out hover:bg-opacity-80 hover:shadow-signUp">
+                    <button type="submit" className="flex w-full items-center justify-center rounded-md bg-primary py-4 px-9 text-base font-medium text-white transition duration-300 ease-in-out hover:bg-opacity-80 hover:shadow-signUp">
                       Sign up
                     </button>
                   </div>
