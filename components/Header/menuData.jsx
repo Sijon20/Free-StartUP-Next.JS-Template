@@ -91,19 +91,19 @@ const profileData = [
     submenu: [
       {
         id: 41,
-        title: "About Page",
+        title: "Dashboard",
         path: "/about",
         newTab: false,
       },
       {
         id: 42,
-        title: "Contact Page",
+        title: "Profile",
         path: "/contact",
         newTab: false,
       },
       {
         id: 43,
-        title: "Blog Grid Page",
+        title: "Settings",
         path: "/blog",
         newTab: false,
       },

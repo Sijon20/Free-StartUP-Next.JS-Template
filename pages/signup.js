@@ -5,7 +5,21 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {ServerError,SingUPSuccess,NotSamePassword,EmailAlreadyExist,NotField} from "../components/tost";
 import {userregister} from "../components/apis";
+import cookieCutter from 'cookie-cutter';
+import Lodear from "@/components/Lodear";
+
 const SignupPage = () => {
+  const [lodear, setlodear] = useState(false)
+  useEffect(() => {
+    setlodear(true);
+    if(!cookieCutter.get('userdata') || !cookieCutter.get('jwt')){
+    }
+    else{
+      window.location.href = "/"
+    }
+      setlodear(false)
+
+  }, []);
   const router = useRouter();
 
   const [regdata, setregdata] = useState({
@@ -45,6 +59,8 @@ const SignupPage = () => {
     setregdata({ ...regdata, [name]: value });
   }; 
   return (
+    <>
+    {lodear ? <Lodear/> :
     <>
       <section className="relative z-10 overflow-hidden pt-36 pb-16 md:pb-20 lg:pt-[180px] lg:pb-28">
       
@@ -288,6 +304,8 @@ const SignupPage = () => {
           </svg>
         </div>
       </section>
+      </>
+      }
     </>
   );
 };

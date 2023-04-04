@@ -1,8 +1,46 @@
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import Lodear from "@/components/Lodear";
+import { userlogin } from "@/components/apis";
+import {ServerError,SingUPSuccess,NotSamePassword,EmailAlreadyExist,NotField} from "../components/tost";
+import cookieCutter from 'cookie-cutter';
+const SigninPage = ({}) => {
+  
+  const [lodear, setlodear] = useState(false)
+  useEffect(() => {
+    setlodear(true);
+    if(!cookieCutter.get('userdata') || !cookieCutter.get('jwt')){
+    }
+    else{
+      window.location.href = "/"
+    }
+      setlodear(false)
 
-const SigninPage = () => {
+  }, []);
+  const [logdata, setlogdata] = useState({
+    email: "",
+    password: "",
+  })
+  const onchange = (e) => {
+    setlogdata({ ...logdata, [e.target.name]: e.target.value });
+  };
+  const login = async (e) => {
+    if(!logdata.email || !logdata.password){
+      NotField();
+    }
+    else{
+    e.preventDefault();
+    setlodear(true);
+    await userlogin(logdata);
+    setlodear(false);
+    setTimeout(() => {
+      window.location.href = "/"
+    }, 2400);
+  }
+  }; 
   return (
     <>
+    {lodear ? (<Lodear/>):<>
       <section className="relative z-10 overflow-hidden pt-36 pb-16 md:pb-20 lg:pt-[180px] lg:pb-28">
         <div className="container">
           <div className="-mx-4 flex flex-wrap">
@@ -23,7 +61,7 @@ const SigninPage = () => {
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
                     >
-                      <g clip-path="url(#clip0_95:967)">
+                      <g clipPath="url(#clip0_95:967)">
                         <path
                           d="M20.0001 10.2216C20.0122 9.53416 19.9397 8.84776 19.7844 8.17725H10.2042V11.8883H15.8277C15.7211 12.539 15.4814 13.1618 15.1229 13.7194C14.7644 14.2769 14.2946 14.7577 13.7416 15.1327L13.722 15.257L16.7512 17.5567L16.961 17.5772C18.8883 15.8328 19.9997 13.266 19.9997 10.2216"
                           fill="#4285F4"
@@ -57,7 +95,7 @@ const SigninPage = () => {
                   </p>
                   <span className="hidden h-[1px] w-full max-w-[70px] bg-body-color sm:block"></span>
                 </div>
-                <form>
+                <form onSubmit={login}>
                   <div className="mb-8">
                     <label
                       htmlFor="email"
@@ -68,6 +106,8 @@ const SigninPage = () => {
                     <input
                       type="email"
                       name="email"
+                      value={logdata.email}
+                      onChange={onchange}
                       placeholder="Enter your Email"
                       className="w-full rounded-md border border-transparent py-3 px-6 text-base text-body-color placeholder-body-color shadow-one outline-none focus:border-primary focus-visible:shadow-none dark:bg-[#242B51] dark:shadow-signUp"
                     />
@@ -82,6 +122,8 @@ const SigninPage = () => {
                     <input
                       type="password"
                       name="password"
+                      value={logdata.password}
+                      onChange={onchange}
                       placeholder="Enter your Password"
                       className="w-full rounded-md border border-transparent py-3 px-6 text-base text-body-color placeholder-body-color shadow-one outline-none focus:border-primary focus-visible:shadow-none dark:bg-[#242B51] dark:shadow-signUp"
                     />
@@ -130,7 +172,7 @@ const SigninPage = () => {
                     </div>
                   </div>
                   <div className="mb-6">
-                    <button className="flex w-full items-center justify-center rounded-md bg-primary py-4 px-9 text-base font-medium text-white transition duration-300 ease-in-out hover:bg-opacity-80 hover:shadow-signUp">
+                    <button type="submit" className="flex w-full items-center justify-center rounded-md bg-primary py-4 px-9 text-base font-medium text-white transition duration-300 ease-in-out hover:bg-opacity-80 hover:shadow-signUp">
                       Sign in
                     </button>
                   </div>
@@ -203,6 +245,7 @@ const SigninPage = () => {
           </svg>
         </div>
       </section>
+      </>}
     </>
   );
 };
