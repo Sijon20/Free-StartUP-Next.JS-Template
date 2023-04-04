@@ -41,7 +41,7 @@ const ProfileMenu = ({handleSubmenu,openIndex,profilename}) => {
                 key={submenuItem.id}
                 className="block rounded py-2.5 text-sm text-dark hover:opacity-70 dark:text-white lg:px-3"
               >
-                {submenuItem.title}
+                <button onClick={submenuItem.func}>{submenuItem.title}</button>
               </Link>
             ))}
           </div>

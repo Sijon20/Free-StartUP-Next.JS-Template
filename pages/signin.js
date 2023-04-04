@@ -35,7 +35,7 @@ const SigninPage = ({}) => {
     setlodear(false);
     setTimeout(() => {
       window.location.href = "/"
-    }, 2400);
+    }, 1000);
   }
   }; 
   return (

@@ -39,7 +39,7 @@ const SignupPage = () => {
           // window.location.href = "/";
           router.push("/");
         }
-        , 3000);
+        , 1000);
         const rankey = Math.random();
       }
       ree();
