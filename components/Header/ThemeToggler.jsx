@@ -2,6 +2,7 @@ import { useTheme } from "next-themes";
 
 const ThemeToggler = () => {
   const { theme, setTheme } = useTheme();
+  // console.log(theme);
   return (
     <button
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}

@@ -34,10 +34,12 @@ const SignupPage = () => {
     if(name && email && password && cpassword){
       if(password === cpassword){
         const ree = async () => {
+          setlodear(true);
         await userregister(regdata);
+        setlodear(false);
         setTimeout(() => {
           // window.location.href = "/";
-          router.push("/");
+          router.push("/confirm-your-email");
         }
         , 1000);
         const rankey = Math.random();

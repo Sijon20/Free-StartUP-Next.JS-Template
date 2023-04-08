@@ -40,9 +40,12 @@ import 'react-toastify/dist/ReactToastify.css';
       const NotField = () => {
         toast.info('Please fill all fields');
       }
+      const Copy = () => {
+        toast.success('Copied to clipboard');
+      }
       
       
   
     // <-------------Tosts End ------------->
 // exporting all functions
-    export {LoginSuccess,WrongPassword,EmailNotExist,ServerError,SingUPSuccess,NotSamePassword,EmailAlreadyExist,NotField}
+    export {Copy,LoginSuccess,WrongPassword,EmailNotExist,ServerError,SingUPSuccess,NotSamePassword,EmailAlreadyExist,NotField}

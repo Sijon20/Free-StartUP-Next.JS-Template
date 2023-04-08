@@ -5,10 +5,12 @@ import { useEffect, useState } from "react";
 import ThemeToggler from "./ThemeToggler";
 import {menuData,profileData} from "./menuData";
 import { ProfileMenu,Navmenu } from "./Menu";
+import { ToastContainer, toast } from 'react-toastify';
 import cookieCutter from 'cookie-cutter';
-
-
+import { useTheme } from 'next-themes'
 const Header = ({headerkey ,isAuthenticated ,profile}) => {
+  const { theme } = useTheme()
+  
   
   // Navbar toggle
   const [navbarOpen, setNavbarOpen] = useState(false);
@@ -47,6 +49,19 @@ const Header = ({headerkey ,isAuthenticated ,profile}) => {
             : "absolute"
         }`}
       >
+        <ToastContainer
+            position="top-right"
+            autoClose={2000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            // if theme is dark, then toast theme is dark and else light
+            theme={theme}
+          />
         <div className="container">
           <div className="relative -mx-4 flex items-center justify-between">
             {/* Header Tittle Start --------> */}

@@ -4,8 +4,11 @@ import Lodear from "@/components/Lodear";
 import { userlogin } from "@/components/apis";
 import {ServerError,SingUPSuccess,NotSamePassword,EmailAlreadyExist,NotField} from "../components/tost";
 import cookieCutter from 'cookie-cutter';
+import { root } from "postcss";
+import { Router } from "next/router";
+import { useRouter } from "next/router";
 const SigninPage = ({}) => {
-  
+  const router = useRouter();
   const [lodear, setlodear] = useState(false)
   useEffect(() => {
     setlodear(true);
@@ -33,10 +36,7 @@ const SigninPage = ({}) => {
     setlodear(true);
     await userlogin(logdata);
     setlodear(false);
-    setTimeout(() => {
-      window.location.href = "/"
-    }, 1000);
-  }
+    }
   }; 
   return (
     <>

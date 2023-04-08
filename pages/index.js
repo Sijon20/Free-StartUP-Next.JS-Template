@@ -22,8 +22,8 @@ export default function Home() {
       </Head>
       <Hero />
       <Features />
-      <Video />
-      <Brands />
+      {/* <Video /> */}
+      {/* <Brands /> */}
       <AboutSectionOne />
       <AboutSectionTwo />
       <Testimonials />

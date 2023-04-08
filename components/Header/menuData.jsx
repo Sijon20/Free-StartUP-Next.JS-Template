@@ -1,6 +1,6 @@
 import { useState } from "react";
 import cookieCutter from 'cookie-cutter';
-
+import { supabase } from "@/components/supabase";
 const menuData = [
   {
     id: 1,
@@ -110,11 +110,10 @@ const profileData = [
       {
         id: 44,
         title: "Logout",
-        func: () => {
-          cookieCutter.set('userdata', '', { expires: new Date(0) })
-          cookieCutter.set('jwt', '', { expires: new Date(0) })
+        func: async ()  => {
+          const { error } = await supabase.auth.signOut();
           window.location.reload();
-          console.log("logout");
+          console.log("logout" , error);
         },
         path: "",
         newTab: false,
